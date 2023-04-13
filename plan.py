@@ -4,6 +4,7 @@ import os
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Pt
 from docx.oxml.ns import qn
+import getpass
 
 # Set up the document style
 document = docx.Document()
@@ -38,13 +39,14 @@ lesson_notes = st.text_area("NOTAS")
 
 st.write("Designed by Mr. A.R Visagie @ Saul Damon High School")
 # Set up the save button
-if st.button("Save"):
+if st.button("Save", key='save_button'):
     # Check if the file already exists
-    file_path = os.path.expanduser(f"~/Desktop/{lesson_title}.docx")
+    username = getpass.getuser()
+    file_path = os.path.expanduser(f"C:/Users/{username}/Desktop/{lesson_title}.docx")
     while os.path.exists(file_path):
         st.warning(f"A file with the name '{lesson_title}.docx' already exists on your desktop. Please choose a different name.")
         lesson_title = st.text_input("Lesson Title")
-        file_path = os.path.expanduser(f"~/Desktop/{lesson_title}.docx")
+        file_path = os.path.expanduser(f"C:/Users/{username}/Desktop/{lesson_title}.docx")
         
     # Add the lesson plan to the document
     p = document.add_paragraph(selected_grade, style='Heading 1')
@@ -56,24 +58,24 @@ if st.button("Save"):
     # Add the lesson date
     date_str = lesson_date.strftime('%A, %B %d, %Y')
     document.add_paragraph(date_str, style='Heading 2')
-    
-    # Add the lesson objective, activities, materials, and homework
-    document.add_heading("Objective", level=2)
+
+# Add the lesson objective, activities, materials, and homework
+    document.add_heading("LES DOELWIT", level=2)
     document.add_paragraph(lesson_objective)
     
-    document.add_heading("Activities", level=2)
+    document.add_heading("LEERDER AKTIWITEITE", level=2)
     document.add_paragraph(lesson_activities)
     
-    document.add_heading("Materials", level=2)
+    document.add_heading("MATERIAAL BENODIG", level=2)
     document.add_paragraph(lesson_materials)
     
-    document.add_heading("Homework", level=2)
+    document.add_heading("HUISWERK", level=2)
     document.add_paragraph(lesson_homework)
     
     # Add the notes
-    document.add_heading("Notes", level=2)
+    document.add_heading("NOTAS", level=2)
     document.add_paragraph(lesson_notes)
-    
+
     # Add the teacher's signature line
     document.add_paragraph("")
     document.add_paragraph("")
@@ -82,7 +84,11 @@ if st.button("Save"):
     p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     p.add_run("___________________________").bold = True
     p.add_run("\nTeacher's Signature").bold = True
-    
+
     # Save the document
+    file_path = os.path.join(os.path.expanduser('~'), 'Desktop', f"{lesson_title}.docx")
     document.save(file_path)
     st.success("File saved successfully!")
+
+    
+   
