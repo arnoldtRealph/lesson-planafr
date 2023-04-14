@@ -4,8 +4,23 @@ import io
 import docx
 from datetime import date
 
+
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:")
+
+# tracking code
+ga_tracking_code = """
+<!-- Google Analytics tracking code -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D5FYHSVRJ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D5FYHSVRJ2');
+</script>
+"""
+
+st.write(ga_tracking_code, unsafe_allow_html=True)
 
 # Create input fields
 st.title("HOЁRSKOOL SAUL DAMON")
@@ -71,3 +86,5 @@ if st.button("Create Lesson Plan"):
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         )
         st.success("Your lesson plan has been created. Click the download button to save the file.")
+
+
