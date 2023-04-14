@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import io
 import docx
+from datetime import date
 
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:")
@@ -13,14 +14,17 @@ st.write("Vul asseblief die volgende velde in om 'n nuwe lesplan te skep:")
 st.write("")
 subject = st.text_input("VAK")
 lesson_title = st.text_input("LES TITEL")
-grade = st.selectbox("GRAAD", ["GRAAD 9", "GRAAD 10", "GRAAD 11", "GRAAD 12"])
-lesson_date = st.date_input("LES DATUM")
+grade = st.selectbox("GRAAD", ["9", "10", "11", "12"])
+st.subheader("KIES JOU BEGIN- EN EINDDATUM")
+start_date = st.date_input("VANAF", value=date.today())
+end_date = st.date_input("TOT", value=date.today())
 lesson_objective = st.text_area("LES DOELWITTE")
 lesson_introduction = st.text_area("INLEIDING")
 lesson_activities = st.text_area("LES AKTIWITEITE")
 materials_needed = st.text_area("MATERIAAL BENODIG")
 homework = st.text_area("HUISWERK")
 notes = st.text_area("NOTAS")
+st.subheader("OPVOEDER BESONDERHEDE")
 teacher_name = st.text_input("VOORLETTERS")
 teacher_surname = st.text_input("VAN")
 st.write("")
@@ -35,7 +39,8 @@ if st.button("Create Lesson Plan"):
     document.add_paragraph("")
     document.add_paragraph("LES TITEL: " + lesson_title)
     document.add_paragraph("GRAAD: " + grade)
-    document.add_paragraph("LES DATUM: " + str(lesson_date))
+    document.add_paragraph("FROM: " + str(start_date))
+    document.add_paragraph("TO: " + str(end_date))
     document.add_paragraph("")
     document.add_heading("LES DOELWITTE", level=1)
     document.add_paragraph(lesson_objective)
