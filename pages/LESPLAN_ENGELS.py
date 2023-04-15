@@ -4,7 +4,6 @@ import io
 import docx
 from datetime import date
 
-
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:")
 
@@ -23,25 +22,25 @@ ga_tracking_code = """
 st.write(ga_tracking_code, unsafe_allow_html=True)
 
 # Create input fields
-st.title("HOЁRSKOOL SAUL DAMON")
-st.subheader("LESBEPLANNER")
-st.write("Vul asseblief die volgende velde in om 'n nuwe lesplan te skep:")
+st.title("SAUL DAMON HIGH SCHOOL")
+st.subheader("LESSON PLANNER")
+st.write("Please fill in the following fields to create a new lesson plan:")
 st.write("")
-subject = st.text_input("VAK")
-lesson_title = st.text_input("LES TITEL")
-grade = st.selectbox("GRAAD", ["9", "10", "11", "12"])
-st.subheader("KIES JOU BEGIN- EN EINDDATUM")
-start_date = st.date_input("VANAF", value=date.today())
-end_date = st.date_input("TOT", value=date.today())
-lesson_objective = st.text_area("LES DOELWITTE")
-lesson_introduction = st.text_area("INLEIDING")
-lesson_activities = st.text_area("LES AKTIWITEITE")
-materials_needed = st.text_area("MATERIAAL BENODIG")
-homework = st.text_area("HUISWERK")
-notes = st.text_area("NOTAS")
-st.subheader("OPVOEDER BESONDERHEDE")
-teacher_name = st.text_input("VOORLETTERS")
-teacher_surname = st.text_input("VAN")
+subject = st.text_input("SUBJECT")
+lesson_title = st.text_input("LESSON TITLE")
+grade = st.selectbox("GRADE", ["9", "10", "11", "12"])
+st.subheader("CHOOSE YOUR START AND END DATE")
+start_date = st.date_input("FROM", value=date.today())
+end_date = st.date_input("TO", value=date.today())
+lesson_objective = st.text_area("LESSON OBJECTIVES")
+lesson_introduction = st.text_area("INTRODUCTION")
+lesson_activities = st.text_area("LESSON ACTIVITIES")
+materials_needed = st.text_area("MATERIAL NEEDED")
+homework = st.text_area("HOMEWORK ACTIVITIES")
+notes = st.text_area("NOTES")
+st.subheader("TEACHER INFORMATION")
+teacher_name = st.text_input("INITIALS")
+teacher_surname = st.text_input("SURNAME")
 st.write("")
 st.write("Created by Mr. A.R Visagie @ Saul Damon High School")
 
@@ -52,27 +51,27 @@ if st.button("Create Lesson Plan"):
     # Add input values to the document
     document.add_heading(subject.upper(), level=0)
     document.add_paragraph("")
-    document.add_paragraph("LES TITEL: " + lesson_title)
-    document.add_paragraph("GRAAD: " + grade)
-    document.add_paragraph("VANAF: " + str(start_date))
-    document.add_paragraph("TOT: " + str(end_date))
+    document.add_paragraph("LESSON TITLE: " + lesson_title)
+    document.add_paragraph("GRADE: " + grade)
+    document.add_paragraph("FROM: " + str(start_date))
+    document.add_paragraph("TO: " + str(end_date))
     document.add_paragraph("")
-    document.add_heading("LES DOELWITTE", level=1)
+    document.add_heading("LESSON OBJECTIVES", level=1)
     document.add_paragraph(lesson_objective)
-    document.add_heading("INLEIDING", level=1)
+    document.add_heading("INTRODUCTION", level=1)
     document.add_paragraph(lesson_introduction)
-    document.add_heading("LES AKTIWITEITE", level=1)
+    document.add_heading("LESSON ACTIVITIES", level=1)
     document.add_paragraph(lesson_activities)
-    document.add_heading("MATERIAAL BENODIG", level=1)
+    document.add_heading("MATERIAL NEEDED", level=1)
     document.add_paragraph(materials_needed)
-    document.add_heading("HUISWERK", level=1)
+    document.add_heading("HOMEWORK ACTIVITIES", level=1)
     document.add_paragraph(homework)
-    document.add_heading("NOTAS", level=1)
+    document.add_heading("NOTES", level=1)
     document.add_paragraph(notes)
     document.add_paragraph("")
-    document.add_paragraph("VOORLETTERS: " + teacher_name)
-    document.add_paragraph("VAN: " + teacher_surname)
-    document.add_paragraph("HANDTEKENNG: ")
+    document.add_paragraph("INITIALS: " + teacher_name)
+    document.add_paragraph("SURNAME: " + teacher_surname)
+    document.add_paragraph("SIGNATURE: ")
 
     # Save document to BytesIO object
     with io.BytesIO() as output:
@@ -86,5 +85,3 @@ if st.button("Create Lesson Plan"):
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         )
         st.success("Your lesson plan has been created. Click the download button to save the file.")
-
-
