@@ -9,13 +9,24 @@ from datetime import date
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:")
 
-# tracking code
-# Load Google Analytics HTML code from file
-with open('google_analytics.html', 'r') as f:
-    ga_code = f.read()
 
-# Display Google Analytics code in Streamlit app
+# Add the Google Analytics tag to your Streamlit app
+GA_TRACKING_ID = 'G-D5FYHSVRJ2'
+
+ga_code = f'''
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_TRACKING_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+
+  gtag('config', '{GA_TRACKING_ID}');
+</script>
+'''
+
 st.markdown(ga_code, unsafe_allow_html=True)
+
 
 # Create input fields
 st.title("SAUL DAMON HIGH SCHOOL")
