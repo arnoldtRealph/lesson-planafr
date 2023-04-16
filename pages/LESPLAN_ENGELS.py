@@ -4,22 +4,18 @@ import io
 import docx
 from datetime import date
 
+
+
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:")
 
 # tracking code
-ga_tracking_code = """
-<!-- Google Analytics tracking code -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D5FYHSVRJ2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-D5FYHSVRJ2');
-</script>
-"""
+# Load Google Analytics HTML code from file
+with open('google_analytics.html', 'r') as f:
+    ga_code = f.read()
 
-st.write(ga_tracking_code, unsafe_allow_html=True)
+# Display Google Analytics code in Streamlit app
+st.markdown(ga_code, unsafe_allow_html=True)
 
 # Create input fields
 st.title("SAUL DAMON HIGH SCHOOL")
