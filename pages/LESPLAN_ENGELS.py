@@ -3,29 +3,18 @@ import os
 import io
 import docx
 from datetime import date
-
+import streamlit.components.v1 as components
 
 
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:")
 
 
-# Add the Google Analytics tag to your Streamlit app
-GA_TRACKING_ID = 'G-D5FYHSVRJ2'
+# Include Google Analytics tracking code
+with open("google_analytics.html", "r") as f:
+    html_code = f.read()
+    components.html(html_code, height=0)
 
-ga_code = f'''
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={GA_TRACKING_ID}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
-  gtag('js', new Date());
-
-  gtag('config', '{GA_TRACKING_ID}');
-</script>
-'''
-
-st.markdown(ga_code, unsafe_allow_html=True)
 
 
 # Create input fields
