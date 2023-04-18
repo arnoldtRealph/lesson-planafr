@@ -85,3 +85,8 @@ if st.button("Create Lesson Plan"):
         st.success("Your lesson plan has been created. Click the download button to save the file.")
 
 
+     # Add a fun element
+    st.balloons()
+
+
+
