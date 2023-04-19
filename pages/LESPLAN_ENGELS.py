@@ -4,7 +4,10 @@ import io
 import docx
 from datetime import date
 import streamlit.components.v1 as components
+import streamlit_analytics
 
+# streamlit analytics
+streamlit_analytics.start_tracking()
 
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:")
@@ -79,3 +82,4 @@ if st.button("Create Lesson Plan"):
      # Add a fun element
     st.balloons()
 
+streamlit_analytics.stop_tracking()
