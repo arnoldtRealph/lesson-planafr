@@ -4,16 +4,15 @@ import io
 import docx
 from datetime import date
 import streamlit.components.v1 as components
+import streamlit_analytics
 
+
+# See Streamlit analytics
+streamlit_analytics.start_tracking()
 
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:")
 
-
-# Include Google Analytics tracking code
-with open("google_analytics.html", "r") as f:
-    html_code = f.read()
-    components.html(html_code, height=0)
 
 
 # Sidebar options
@@ -88,5 +87,5 @@ if st.button("Create Lesson Plan"):
      # Add a fun element
     st.balloons()
 
-
+streamlit_analytics.stop_tracking()
 
