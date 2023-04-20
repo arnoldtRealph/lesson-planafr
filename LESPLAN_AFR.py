@@ -5,21 +5,23 @@ import docx
 from datetime import date
 import streamlit.components.v1 as components
 import streamlit_analytics
+from PIL import Image
 
+Header_image = Image.open("IMAGES/header.png")
 # streamlit analytics
 streamlit_analytics.start_tracking()
 
 # Set page title and icon
-st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:")
-
+st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:", layout= "wide")
+st.image("IMAGES/header.png")
 
 
 # Sidebar options
 st.sidebar.success("Kies 'n opsie hierbo")
 
 # Create input fields
-st.title("HOЁRSKOOL SAUL DAMON")
-st.subheader("LESBEPLANNER")
+
+st.title("LESBEPLANNER")
 st.write("Vul asseblief die volgende velde in om 'n nuwe lesplan te skep:")
 st.write("")
 subject = st.text_input("VAK")
