@@ -1,6 +1,6 @@
 [theme]
-primaryColor = "#4285F4"   # Google Blue
+primaryColor = "#4285F4"   # Blue
 backgroundColor = "#FFFFFF"   # White
-secondaryBackgroundColor = "#90EE90"   # Google Grey
-textColor = "#333333"   # Google Dark Grey
+secondaryBackgroundColor = "#87CEEB"   # Sky blue
+textColor = "#000000"   # Black
 font="serif"

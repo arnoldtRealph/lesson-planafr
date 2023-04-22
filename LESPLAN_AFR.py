@@ -4,24 +4,35 @@ import io
 import docx
 from datetime import date
 import streamlit.components.v1 as components
-import streamlit_analytics
 from PIL import Image
+from streamlit_extras.colored_header import colored_header
+from streamlit_extras.app_logo import add_logo
 
 Header_image = Image.open("IMAGES/header.png")
-# streamlit analytics
-streamlit_analytics.start_tracking()
 
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:", layout= "wide")
 st.image("IMAGES/header.png")
 
+# add app logo
+add_logo("IMAGES/wapen.png", height=150)
+
+# using streamlit extras colored eader
+
+colored_header(
+    label="LESBEPLANNER",
+    description="Hierdie interaktiewe webblad help u om maklik en vinnig lesplanne te skep.",
+    color_name="red-70",
+)
+
+# add app logo
+add_logo("IMAGES/wapen.png", height=150)
 
 # Sidebar options
 st.sidebar.success("Kies 'n opsie hierbo")
 
 # Create input fields
 
-st.title("LESBEPLANNER")
 st.write("Vul asseblief die volgende velde in om 'n nuwe lesplan te skep:")
 st.write("")
 subject = st.text_input("VAK")
@@ -89,4 +100,3 @@ if st.button("Create Lesson Plan"):
     st.balloons()
 
 
-streamlit_analytics.stop_tracking()

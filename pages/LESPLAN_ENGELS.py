@@ -4,19 +4,27 @@ import io
 import docx
 from datetime import date
 import streamlit.components.v1 as components
-import streamlit_analytics
+from streamlit_extras.colored_header import colored_header
+from streamlit_extras.app_logo import add_logo
 
-# streamlit analytics
-streamlit_analytics.start_tracking()
 
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:")
 
 
+# add app logo
+add_logo("IMAGES/wapen.png", height=150)
+
+st.title("SAUL DAMON HIGH SCHOOL")
+
+# using streamlit extras colored eader
+colored_header(
+    label="LESSON PLANNER",
+    description="This interactive tool helps you create fast and easy lesson plans.",
+    color_name="green-70",
+)
 
 # Create input fields
-st.title("SAUL DAMON HIGH SCHOOL")
-st.subheader("LESSON PLANNER")
 st.write("Please fill in the following fields to create a new lesson plan:")
 st.write("")
 subject = st.text_input("SUBJECT")
@@ -82,4 +90,3 @@ if st.button("Create Lesson Plan"):
      # Add a fun element
     st.balloons()
 
-streamlit_analytics.stop_tracking()
