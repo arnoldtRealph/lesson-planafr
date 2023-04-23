@@ -24,7 +24,7 @@ colored_header(
 lottie_coding = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_VAj8qSTBG9.json")
 
 # Here is the title of the page
-st.write("Klik hier onder om die dokumente af te laai:")
+st.write("Klik hieronder om die dokumente af te laai:")
 
 
 st.write("[KLIK HIER](https://drive.google.com/drive/folders/1HGDkPeJgMlTLYuYpj28Wy_-t_S8aHVfz?usp=share_link)")
