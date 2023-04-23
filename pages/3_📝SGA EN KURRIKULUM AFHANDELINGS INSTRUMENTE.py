@@ -25,7 +25,7 @@ colored_header(
 lottie_coding = load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_uqsv3ztj.json")
 
 # Here is the title of the page
-st.write("Klik hier onder vir SGA en KURR. AFHANDELINGS INSTRUMENTE")
+st.write("Klik hieronder vir SGA en KURR. AFHANDELINGS INSTRUMENTE")
 
 
 st.write("[KLIK HIER](https://drive.google.com/drive/folders/1pi7vv0BvG5-s9o-j27jFWoiXI82Agarg?usp=share_link)")
