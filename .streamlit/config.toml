@@ -1,6 +1,6 @@
 [theme]
 primaryColor = "#B46C76"   # light maroon
-backgroundColor = "#FFFFFF"   # light yellow
-secondaryBackgroundColor = "#31AA92"   # Sky blue
-textColor = "#000000"   # Black
+backgroundColor = "#061724"   # light yellow
+secondaryBackgroundColor = "#2481ce"   # Sky blue
+textColor = "#ffffff"   # Black
 font="serif"
