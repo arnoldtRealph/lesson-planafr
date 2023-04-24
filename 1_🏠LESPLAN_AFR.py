@@ -7,7 +7,9 @@ import streamlit.components.v1 as components
 from PIL import Image
 from streamlit_extras.colored_header import colored_header
 from streamlit_extras.app_logo import add_logo
+import streamlit_analytics
 
+streamlit_analytics.start_tracking()
 Header_image = Image.open("IMAGES/header.png")
 
 # Set page title and icon
@@ -100,4 +102,4 @@ if st.button("Create Lesson Plan"):
      # Add a fun element
     st.balloons()
 
-
+streamlit_analytics.stop_tracking()

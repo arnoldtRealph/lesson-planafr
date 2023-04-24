@@ -4,8 +4,9 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_lottie import st_lottie
 import requests
 from streamlit_extras.app_logo import add_logo
+import streamlit_analytics
 
-
+streamlit_analytics.start_tracking()
 # add app logo
 add_logo("IMAGES/wapen.png", height=150)
 
@@ -31,3 +32,6 @@ st.write("Klik hieronder om die dokumente af te laai:")
 st.write("[KLIK HIER](https://drive.google.com/drive/folders/1HGDkPeJgMlTLYuYpj28Wy_-t_S8aHVfz?usp=share_link)")
 
 st_lottie(lottie_coding, height = 200 , key="coding")
+
+
+streamlit_analytics.stop_tracking()
