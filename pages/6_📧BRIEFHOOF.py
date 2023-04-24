@@ -19,7 +19,7 @@ def load_lottieurl(url):
 # using streamlit extras colored reader
 colored_header(
     label="BRIEFHOOF",
-    description="U kan hierdie dokumente aflaai en stoor op u toestel vir toekomstige gebruik:.",
+    description="U kan hierdie dokument aflaai en stoor op u toestel vir toekomstige gebruik:.",
     color_name="blue-70",
 )
 
