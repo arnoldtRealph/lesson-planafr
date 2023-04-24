@@ -16,20 +16,20 @@ def load_lottieurl(url):
         return None
     return r.json()
 
-# using streamlit extras colored eader
+# using streamlit extras colored reader
 colored_header(
-    label="Kurrikulum en SGA Afhandelings Instrumente:",
+    label="BRIEFHOOF",
     description="U kan hierdie dokumente aflaai en stoor op u toestel vir toekomstige gebruik:.",
     color_name="blue-70",
 )
 
-lottie_coding = load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_uqsv3ztj.json")
+lottie_coding = load_lottieurl("https://assets8.lottiefiles.com/private_files/lf30_odansovk.json")
 
 # Here is the title of the page
-st.write("Klik hieronder vir SGA en KURR. AFHANDELINGS INSTRUMENTE")
+st.write("Klik hieronder die BRIEFHOOF")
 
 
-st.write("[KLIK HIER](https://drive.google.com/drive/folders/1pi7vv0BvG5-s9o-j27jFWoiXI82Agarg?usp=share_link)")
+st.write("[KLIK HIER](https://drive.google.com/drive/folders/1j2aw8V6ySOmlVPODERkvBEU39o7ydAXC?usp=share_link)")
 
 st_lottie(lottie_coding, height = 200 , key="coding")
 

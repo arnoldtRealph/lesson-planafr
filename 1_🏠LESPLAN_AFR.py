@@ -14,6 +14,7 @@ Header_image = Image.open("IMAGES/header.png")
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:", layout= "wide")
 st.image("IMAGES/header.png")
 
+
 # add app logo
 add_logo("IMAGES/wapen.png", height=150)
 
