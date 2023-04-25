@@ -21,7 +21,7 @@ def load_lottieurl(url):
 colored_header(
     label="SCHOOL BAG AUDIT:",
     description="U kan hierdie dokumente aflaai en stoor op u toestel vir toekomstige gebruik:",
-    color_name="purple-70",
+    color_name="yellow-70",
 )
 
 lottie_coding = load_lottieurl("https://assets8.lottiefiles.com/packages/lf20_VUlRFjKj5P.json")
