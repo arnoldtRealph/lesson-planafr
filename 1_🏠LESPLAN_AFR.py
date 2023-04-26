@@ -55,11 +55,15 @@ if response.status_code == 200:
     data = response.json()
     temperature = data['main']['temp'] - 273.15  # Convert from Kelvin to Celsius
 
-    # Add some CSS styling to the temperature display
-    st.sidebar.markdown(f'<h1 style="text-align:center;font-size:15px;color:#66b6d2">{temperature:.1f}°C</h1>', unsafe_allow_html=True)
-    st.sidebar.markdown(f'<p style="text-align:center;font-size:15px;color:#66d26a;">Die huidige temperatuur in Upington is {temperature:.1f}°C.</p>', unsafe_allow_html=True)
+    # Create the temperature widget with custom CSS
+    st.sidebar.markdown(f'<div style="background-color:#fff500;border-radius:10px;padding:px;text-align:center;width:px;">'
+                        f'<h3 style="font-size:18px;color:#FFFFFF;margin-top:0;margin-bottom:5px;">{temperature:.1f}°C</h3>'
+                        f'</div>', unsafe_allow_html=True)
 else:
     st.sidebar.write('Error retrieving temperature data.')
+
+
+
 
 # Create input fields
 
