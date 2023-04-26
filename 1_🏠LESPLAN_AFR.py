@@ -9,6 +9,9 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_extras.app_logo import add_logo
 import streamlit_analytics
 import requests
+import justpy as jp
+import plotly.graph_objs as go
+from datetime import datetime
 
 streamlit_analytics.start_tracking()
 
@@ -19,9 +22,6 @@ Header_image = Image.open("IMAGES/header.png")
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:", layout= "wide")
 st.image("IMAGES/header.png")
-
-
-
 
 
 
@@ -36,8 +36,6 @@ colored_header(
     color_name="red-70",
 )
 
-# add app logo
-add_logo("IMAGES/wapen.png", height=150)
 
 # Sidebar options
 st.sidebar.success("Kies 'n opsie hierbo")
@@ -54,13 +52,19 @@ response = requests.get(url)
 if response.status_code == 200:
     data = response.json()
     temperature = data['main']['temp'] - 273.15  # Convert from Kelvin to Celsius
+    description = data['weather'][0]['description']
+    icon_code = data['weather'][0]['icon']
+    icon_url = f"http://openweathermap.org/img/w/{icon_code}.png"
 
-    # Create the temperature widget with custom CSS
-    st.sidebar.markdown(f'<div style="background-color:#fff500;border-radius:10px;padding:px;text-align:center;width:50px;">'
-                        f'<h3 style="font-size:15px;color:#041014;margin-top:0;margin-bottom:5px;">{temperature:.1f}°C</h3>'
-                        f'</div>', unsafe_allow_html=True)
+    st.sidebar.title("Upington Weather")
+    st.sidebar.write(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    st.sidebar.image(icon_url, width=50)
+    st.sidebar.write(f"{temperature:.1f}°C")
+    st.sidebar.write(description.capitalize())
 else:
     st.sidebar.write('Error retrieving temperature data.')
+
+
 
 
 
