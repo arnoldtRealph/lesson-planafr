@@ -9,8 +9,6 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_extras.app_logo import add_logo
 import streamlit_analytics
 import requests
-import justpy as jp
-import plotly.graph_objs as go
 from datetime import datetime
 
 streamlit_analytics.start_tracking()
@@ -63,10 +61,6 @@ if response.status_code == 200:
     st.sidebar.write(description.capitalize())
 else:
     st.sidebar.write('Error retrieving temperature data.')
-
-
-
-
 
 
 # Create input fields
