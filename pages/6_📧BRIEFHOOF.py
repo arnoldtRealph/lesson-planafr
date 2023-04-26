@@ -4,6 +4,7 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_lottie import st_lottie
 import requests
 from streamlit_extras.app_logo import add_logo
+import streamlit_analytics
 
 
 # add app logo

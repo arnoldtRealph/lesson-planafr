@@ -8,13 +8,21 @@ from PIL import Image
 from streamlit_extras.colored_header import colored_header
 from streamlit_extras.app_logo import add_logo
 import streamlit_analytics
+import requests
 
 streamlit_analytics.start_tracking()
+
+
+
 Header_image = Image.open("IMAGES/header.png")
 
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:", layout= "wide")
 st.image("IMAGES/header.png")
+
+
+
+
 
 
 # add app logo
@@ -33,6 +41,25 @@ add_logo("IMAGES/wapen.png", height=150)
 
 # Sidebar options
 st.sidebar.success("Kies 'n opsie hierbo")
+
+# Temperature measuring
+
+API_KEY = '39f8ae42e6d5954888fb5f66edf96c31'
+lat, lon = -28.45, 21.24  # Upington coordinates
+
+url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}'
+
+response = requests.get(url)
+
+if response.status_code == 200:
+    data = response.json()
+    temperature = data['main']['temp'] - 273.15  # Convert from Kelvin to Celsius
+
+    # Add some CSS styling to the temperature display
+    st.sidebar.markdown(f'<h1 style="text-align:center;font-size:15px;color:#66b6d2">{temperature:.1f}°C</h1>', unsafe_allow_html=True)
+    st.sidebar.markdown(f'<p style="text-align:center;font-size:15px;color:#66d26a;">Die huidige temperatuur in Upington is {temperature:.1f}°C.</p>', unsafe_allow_html=True)
+else:
+    st.sidebar.write('Error retrieving temperature data.')
 
 # Create input fields
 
@@ -103,3 +130,11 @@ if st.button("Create Lesson Plan"):
     st.balloons()
 
 streamlit_analytics.stop_tracking()
+
+
+
+
+
+
+
+
