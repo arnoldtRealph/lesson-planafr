@@ -56,8 +56,8 @@ if response.status_code == 200:
     temperature = data['main']['temp'] - 273.15  # Convert from Kelvin to Celsius
 
     # Create the temperature widget with custom CSS
-    st.sidebar.markdown(f'<div style="background-color:#fff500;border-radius:10px;padding:px;text-align:center;width:px;">'
-                        f'<h3 style="font-size:18px;color:#FFFFFF;margin-top:0;margin-bottom:5px;">{temperature:.1f}°C</h3>'
+    st.sidebar.markdown(f'<div style="background-color:#fff500;border-radius:10px;padding:px;text-align:center;width:50px;">'
+                        f'<h3 style="font-size:15px;color:#FFFFFF;margin-top:0;margin-bottom:5px;">{temperature:.1f}°C</h3>'
                         f'</div>', unsafe_allow_html=True)
 else:
     st.sidebar.write('Error retrieving temperature data.')
