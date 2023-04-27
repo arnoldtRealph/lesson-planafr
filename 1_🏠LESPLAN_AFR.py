@@ -47,8 +47,8 @@ st.sidebar.success("Kies 'n opsie hierbo")
 load_dotenv()  
 
 API_KEY = os.getenv('API_KEY')
-lat = float(os.getenv('LATITUDE'))
-lon = float(os.getenv('LONGITUDE'))
+lat = float(os.getenv('MY_LATITUDE'))
+lon = float(os.getenv('MY_LONGITUDE'))
 
 url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}'
 
