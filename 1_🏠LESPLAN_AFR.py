@@ -10,9 +10,7 @@ from streamlit_extras.app_logo import add_logo
 import streamlit_analytics
 import requests
 
-
 streamlit_analytics.start_tracking()
-
 
 
 Header_image = Image.open("IMAGES/header.png")
@@ -23,9 +21,11 @@ st.image("IMAGES/header.png")
 
 
 
-
 # add app logo
 add_logo("IMAGES/wapen.png", height=150)
+
+
+
 
 # using streamlit extras colored eader
 
@@ -35,9 +35,6 @@ colored_header(
     color_name="red-70",
 )
 
-
-# Sidebar options
-st.sidebar.success("Kies 'n opsie hierbo")
 
 
 
