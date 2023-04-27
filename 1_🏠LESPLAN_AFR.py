@@ -44,20 +44,9 @@ st.sidebar.success("Kies 'n opsie hierbo")
 # Load environment variables from .env file
 load_dotenv()
 
-
-# Get API key and location coordinates from environment variables
+# Get API key, latitude, and longitude coordinates from environment variables
 API_KEY = os.getenv('API_KEY')
-lat = float(os.getenv('MY_LATITUDE'))
-lon = float(os.getenv('MY_LONGITUDE'))
-
-lat = float(os.getenv('MY_LATITUDE'))
-lon = float(os.getenv('MY_LONGITUDE'))
-
-print(f'Latitude: {lat}, Longitude: {lon}')
-
-# Construct the URL for the API request
-url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat:.2f}&lon={lon:.2f}&appid={API_KEY}'
-
+lat, lon = float(os.getenv('MY_LATITUDE')), float(os.getenv('MY_LONGITUDE'))
 
 # Construct the URL for the API request
 url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat:.2f}&lon={lon:.2f}&appid={API_KEY}'
@@ -80,7 +69,7 @@ if response.status_code == 200:
     st.sidebar.title("Upington Weather")
     st.sidebar.write(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     st.sidebar.markdown(f'<p style="color: #F2C94C;">{temperature:.1f}°C</p>', unsafe_allow_html=True)
-   
+
 
 
 
