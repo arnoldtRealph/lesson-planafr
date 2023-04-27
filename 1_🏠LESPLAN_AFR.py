@@ -44,10 +44,20 @@ st.sidebar.success("Kies 'n opsie hierbo")
 # Load environment variables from .env file
 load_dotenv()
 
+
 # Get API key and location coordinates from environment variables
 API_KEY = os.getenv('API_KEY')
 lat = float(os.getenv('MY_LATITUDE'))
 lon = float(os.getenv('MY_LONGITUDE'))
+
+lat = float(os.getenv('MY_LATITUDE'))
+lon = float(os.getenv('MY_LONGITUDE'))
+
+print(f'Latitude: {lat}, Longitude: {lon}')
+
+# Construct the URL for the API request
+url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat:.2f}&lon={lon:.2f}&appid={API_KEY}'
+
 
 # Construct the URL for the API request
 url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat:.2f}&lon={lon:.2f}&appid={API_KEY}'
