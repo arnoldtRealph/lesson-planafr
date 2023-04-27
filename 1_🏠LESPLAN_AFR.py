@@ -10,6 +10,7 @@ from streamlit_extras.app_logo import add_logo
 import streamlit_analytics
 import requests
 from datetime import datetime
+from dotenv import load_dotenv
 
 streamlit_analytics.start_tracking()
 
@@ -40,7 +41,17 @@ st.sidebar.success("Kies 'n opsie hierbo")
 
 # Temperature measuring
 
-API_KEY = '39f8ae42e6d5954888fb5f66edf96c31'
+
+import os
+import requests
+from dotenv import load_dotenv
+from datetime import datetime
+import streamlit as st
+
+# Load environment variables from .env file
+load_dotenv()
+
+API_KEY = os.environ['API_KEY']
 lat, lon = -28.45, 21.24  # Upington coordinates
 
 url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}'
@@ -61,6 +72,8 @@ if response.status_code == 200:
     st.sidebar.write(description.capitalize())
 else:
     st.sidebar.write('Error retrieving temperature data.')
+
+
 
 
 # Create input fields
