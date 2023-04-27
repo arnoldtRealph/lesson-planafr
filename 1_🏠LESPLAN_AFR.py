@@ -9,6 +9,8 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_extras.app_logo import add_logo
 import streamlit_analytics
 import requests
+from datetime import datetime
+from dotenv import load_dotenv
 
 streamlit_analytics.start_tracking()
 
@@ -37,6 +39,40 @@ colored_header(
 
 # Sidebar options
 st.sidebar.success("Kies 'n opsie hierbo")
+
+# TEMPERATURE WIDGET
+# Load environment variables from .env file
+load_dotenv()
+
+# Get API key and location coordinates from environment variables
+API_KEY = os.getenv('API_KEY')
+lat = float(os.getenv('MY_LATITUDE'))
+lon = float(os.getenv('MY_LONGITUDE'))
+
+# Construct the URL for the API request
+url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat:.2f}&lon={lon:.2f}&appid={API_KEY}'
+
+# Send the API request and get the response
+response = requests.get(url)
+
+# Check if the request was successful (HTTP status code 200)
+if response.status_code == 200:
+    # Parse the response as JSON data
+    data = response.json()
+    # Extract temperature and description from the JSON data
+    temperature = data['main']['temp'] - 273.15  # Convert from Kelvin to Celsius
+    description = data['weather'][0]['description']
+    icon_code = data['weather'][0]['icon']
+    icon_url = f"http://openweathermap.org/img/w/{icon_code}.png"
+
+    # Display temperature and weather information in the sidebar
+    st.sidebar.image(icon_url, width=50)
+    st.sidebar.title("Upington Weather")
+    st.sidebar.write(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    st.sidebar.markdown(f'<p style="color: #F2C94C;">{temperature:.1f}°C</p>', unsafe_allow_html=True)
+   
+
+
 
 
 # Create input fields
