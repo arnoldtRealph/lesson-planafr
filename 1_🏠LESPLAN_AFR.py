@@ -22,13 +22,26 @@ Header_image = Image.open("IMAGES/header.png")
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:", layout= "wide")
 st.image("IMAGES/header.png")
 
+
+
+
+# add app logo
+add_logo("IMAGES/wapen.png", height=150)
+
+# using streamlit extras colored eader
+
+colored_header(
+    label="LESBEPLANNER",
+    description="Hierdie interaktiewe webblad help u om maklik en vinnig lesplanne te skep.",
+    color_name="red-70",
+)
+
+
+# Sidebar options
+st.sidebar.success("Kies 'n opsie hierbo")
+
 #Temperature widget
 
-import os
-from datetime import datetime
-import requests
-import streamlit as st
-from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()  
@@ -57,23 +70,6 @@ if response.status_code == 200:
 else:
     st.sidebar.write('Error retrieving temperature data.')
 
-
-
-
-# add app logo
-add_logo("IMAGES/wapen.png", height=150)
-
-# using streamlit extras colored eader
-
-colored_header(
-    label="LESBEPLANNER",
-    description="Hierdie interaktiewe webblad help u om maklik en vinnig lesplanne te skep.",
-    color_name="red-70",
-)
-
-
-# Sidebar options
-st.sidebar.success("Kies 'n opsie hierbo")
 
 
 # Create input fields
