@@ -9,7 +9,8 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_extras.app_logo import add_logo
 import streamlit_analytics
 import requests
-
+from dotenv import load_dotenv
+from datetime import datetime
 
 streamlit_analytics.start_tracking()
 
@@ -20,6 +21,42 @@ Header_image = Image.open("IMAGES/header.png")
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:", layout= "wide")
 st.image("IMAGES/header.png")
+
+#Temperature widget
+
+import os
+from datetime import datetime
+import requests
+import streamlit as st
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()  
+
+API_KEY = os.getenv('API_KEY')
+lat = float(os.getenv('LATITUDE'))
+lon = float(os.getenv('LONGITUDE'))
+
+url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}'
+
+response = requests.get(url)
+
+if response.status_code == 200:
+    data = response.json()
+    temperature = data['main']['temp'] - 273.15  # Convert from Kelvin to Celsius
+    description = data['weather'][0]['description']
+    icon_code = data['weather'][0]['icon']
+    icon_url = f"http://openweathermap.org/img/w/{icon_code}.png"
+
+    st.sidebar.image(icon_url, width=50)
+    st.sidebar.title("Upington Weather")
+    st.sidebar.write(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    st.sidebar.markdown(f'<p style="color: #F2C94C;">{temperature:.1f}°C</p>', unsafe_allow_html=True)
+    st.sidebar.markdown(f'<p style="color: #F2C94C;">{description.capitalize()}</p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+else:
+    st.sidebar.write('Error retrieving temperature data.')
+
 
 
 
