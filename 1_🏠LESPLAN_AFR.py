@@ -41,18 +41,13 @@ st.sidebar.success("Kies 'n opsie hierbo")
 
 # Temperature measuring
 
-
-import os
-import requests
-from dotenv import load_dotenv
-from datetime import datetime
-import streamlit as st
-
 # Load environment variables from .env file
 load_dotenv()
 
 API_KEY = os.environ['API_KEY']
-lat, lon = -28.45, 21.24  # Upington coordinates
+LAT_LON = os.environ['LAT_LON']
+
+lat, lon = [float(x.strip()) for x in LAT_LON.split(',')]  # Convert comma-separated string to lat, lon
 
 url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}'
 
@@ -72,6 +67,7 @@ if response.status_code == 200:
     st.sidebar.write(description.capitalize())
 else:
     st.sidebar.write('Error retrieving temperature data.')
+
 
 
 
