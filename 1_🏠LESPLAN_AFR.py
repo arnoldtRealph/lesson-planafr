@@ -9,8 +9,7 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_extras.app_logo import add_logo
 import streamlit_analytics
 import requests
-from datetime import datetime
-from dotenv import load_dotenv
+
 
 streamlit_analytics.start_tracking()
 
@@ -38,38 +37,6 @@ colored_header(
 
 # Sidebar options
 st.sidebar.success("Kies 'n opsie hierbo")
-
-# Temperature measuring
-
-# Load environment variables from .env file
-load_dotenv()
-
-API_KEY = os.environ['API_KEY']
-LAT_LON = os.environ['LAT_LON']
-
-lat, lon = [float(x.strip()) for x in LAT_LON.split(',')]  # Convert comma-separated string to lat, lon
-
-url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}'
-
-response = requests.get(url)
-
-if response.status_code == 200:
-    data = response.json()
-    temperature = data['main']['temp'] - 273.15  # Convert from Kelvin to Celsius
-    description = data['weather'][0]['description']
-    icon_code = data['weather'][0]['icon']
-    icon_url = f"http://openweathermap.org/img/w/{icon_code}.png"
-
-    st.sidebar.title("Upington Weather")
-    st.sidebar.write(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    st.sidebar.image(icon_url, width=50)
-    st.sidebar.write(f"{temperature:.1f}°C")
-    st.sidebar.write(description.capitalize())
-else:
-    st.sidebar.write('Error retrieving temperature data.')
-
-
-
 
 
 # Create input fields
