@@ -9,6 +9,7 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_extras.app_logo import add_logo
 import streamlit_analytics
 import requests
+from datetime import datetime
 
 streamlit_analytics.start_tracking()
 
@@ -21,10 +22,9 @@ st.image("IMAGES/header.png")
 
 
 
+
 # add app logo
 add_logo("IMAGES/wapen.png", height=150)
-
-
 
 
 # using streamlit extras colored eader
@@ -34,8 +34,6 @@ colored_header(
     description="Hierdie interaktiewe webblad help u om maklik en vinnig lesplanne te skep.",
     color_name="red-70",
 )
-
-
 
 
 # Create input fields
@@ -108,6 +106,31 @@ if st.button("Create Lesson Plan"):
 
 streamlit_analytics.stop_tracking()
 
+#Temperature widget
+
+lat = st.secrets["lat"]
+lon = st.secrets["lon"]
+API_KEY = st.secrets["API_KEY"]
+
+url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}'
+
+response = requests.get(url)
+
+if response.status_code == 200:
+    data = response.json()
+    temperature = data['main']['temp'] - 273.15  # Convert from Kelvin to Celsius
+    description = data['weather'][0]['description']
+    icon_code = data['weather'][0]['icon']
+    icon_url = f"http://openweathermap.org/img/w/{icon_code}.png"
+
+    st.title("Upington Weather")
+    st.write(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    st.image(icon_url, width=100)
+    st.markdown(f'<p style="color: #F2C94C;">{temperature:.1f}°C</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="color: #F2C94C;">{description.capitalize()}</p>', unsafe_allow_html=True)
+    st.markdown('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+else:
+    st.write('Error retrieving temperature data.')
 
 
 
