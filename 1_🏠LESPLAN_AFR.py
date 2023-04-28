@@ -106,11 +106,10 @@ if st.button("Create Lesson Plan"):
 
 streamlit_analytics.stop_tracking()
 
-#Temperature widget
-
+#Temperature widget6
 latitude = st.secrets.my_secrets.latitude
 longitude = st.secrets.my_secrets.longitude
-API_KEY = st.secrets.my_secrets.API_KEY
+API_KEY = st.secrets.my_secrets.API_KEY   
 
 url = f'https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={API_KEY}'
 
@@ -130,7 +129,7 @@ if response.status_code == 200:
     st.markdown(f'<p style="color: #F2C94C;">{description.capitalize()}</p>', unsafe_allow_html=True)
     st.markdown('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 else:
-    st.write('Error retrieving temperature data.')
+    st.write('Error retrieving temperature data.') 
 
 
 
