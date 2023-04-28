@@ -108,11 +108,11 @@ streamlit_analytics.stop_tracking()
 
 #Temperature widget
 
-lat = st.secrets["lat"]
-lon = st.secrets["lon"]
-API_KEY = st.secrets["API_KEY"]
+latitude = st.secrets.my_secrets.latitude
+longitude = st.secrets.my_secrets.longitude
+API_KEY = st.secrets.my_secrets.API_KEY
 
-url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}'
+url = f'https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={API_KEY}'
 
 response = requests.get(url)
 
