@@ -10,22 +10,40 @@ from streamlit_extras.app_logo import add_logo
 import streamlit_analytics
 import requests
 from datetime import datetime
+from pathlib import Path
+
+THIS_DIR = Path(__file__).parent if "__file__" in locals() else Path.cwd()
+STYLES_DIR = THIS_DIR / "styles"
+CSS_FILE = STYLES_DIR / "main.css"
+
+
+KLIK_HIER= "https://resourceshssd.streamlit.app"
 
 streamlit_analytics.start_tracking()
 
 
 Header_image = Image.open("IMAGES/header.png")
 
-
+def load_css_file(css_file_path):
+    with open(css_file_path) as f:
+        return st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Set page title and icon
 st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:", layout= "wide")
+
+load_css_file(CSS_FILE)
+
+
+
 st.image("IMAGES/header.png")
 
 # Website redirect
 st.header("This website is moving to a new domain soon and will be deleted: click on the following link to go to the updated site:")
 
-st.header("[KLIK HIER >](https://resourceshssd.streamlit.app)")
+st.markdown(
+        f'<a href={KLIK_HIER} class="button">👉 KLIK HIER</a>',
+        unsafe_allow_html=True,)
+    
 
 st.subheader("Die nuwe site kan gevind word by resourceshssd.streamlit.app")
 st.write("Groete")
