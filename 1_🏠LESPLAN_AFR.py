@@ -23,11 +23,12 @@ st.set_page_config(page_title="Lesson Plan Creator", page_icon=":books:", layout
 st.image("IMAGES/header.png")
 
 # Website redirect
-st.title("This website is moving to a new domain soon and will be deleted: click on the following link to go to the updated site:")
+st.header("This website is moving to a new domain soon and will be deleted: click on the following link to go to the updated site:")
 
-st.header("[KLIK HIER >](resourceshssd.streamlit.app)")
+st.header("[KLIK HIER >](https://resourceshssd.streamlit.app)")
 
 st.subheader("Die nuwe site kan gevind word by resourceshssd.streamlit.app")
+st.write("Groete")
 st.write("Mr. Visagie @ Saul Damon High School")
 
 # add app logo
