@@ -1,0 +1,13 @@
+streamlit
+python-docx
+streamlit_analytics
+streamlit-extras
+streamlit_lottie
+requests
+Pillow
+pandas
+justpy
+datetime
+python-dotenv
+
+
