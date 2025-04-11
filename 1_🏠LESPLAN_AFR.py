@@ -7,7 +7,6 @@ import streamlit.components.v1 as components
 from PIL import Image
 from streamlit_extras.colored_header import colored_header
 from streamlit_extras.app_logo import add_logo
-import streamlit_analytics
 import requests
 from datetime import datetime
 from pathlib import Path
@@ -19,7 +18,6 @@ CSS_FILE = STYLES_DIR / "main.css"
 
 KLIK_HIER= "https://resourceshssd.streamlit.app"
 
-streamlit_analytics.start_tracking()
 
 
 Header_image = Image.open("IMAGES/header.png")
@@ -130,7 +128,6 @@ if st.button("Create Lesson Plan"):
      # Add a fun element
     st.balloons()
 
-streamlit_analytics.stop_tracking()
 
 
 
