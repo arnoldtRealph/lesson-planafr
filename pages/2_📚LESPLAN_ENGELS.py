@@ -6,7 +6,7 @@ from datetime import date
 import streamlit.components.v1 as components
 from streamlit_extras.colored_header import colored_header
 from streamlit_extras.app_logo import add_logo
-import streamlit_analytics
+
 
 streamlit_analytics.start_tracking()
 # Set page title and icon
@@ -91,4 +91,3 @@ if st.button("Create Lesson Plan"):
      # Add a fun element
     st.balloons()
 
-streamlit_analytics.stop_tracking()
