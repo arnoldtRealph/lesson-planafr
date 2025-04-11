@@ -4,7 +4,6 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_lottie import st_lottie
 import requests
 from streamlit_extras.app_logo import add_logo
-import streamlit_analytics
 
 streamlit_analytics.start_tracking()
 # add app logo
@@ -34,8 +33,6 @@ st.write("[KLIK HIER⬅](https://drive.google.com/drive/folders/1ehkG5bCisUbSVYQ
 
 st_lottie(lottie_coding, height = 200 , key="coding")
 
-
-streamlit_analytics.stop_tracking()
 
 
 
