@@ -16,10 +16,6 @@ STYLES_DIR = THIS_DIR / "styles"
 CSS_FILE = STYLES_DIR / "main.css"
 
 
-KLIK_HIER= "https://resourceshssd.streamlit.app"
-
-
-
 Header_image = Image.open("IMAGES/header.png")
 
 def load_css_file(css_file_path):
