@@ -1,6 +1,5 @@
 streamlit
 python-docx
-streamlit_analytics
 streamlit-extras
 streamlit_lottie
 requests
