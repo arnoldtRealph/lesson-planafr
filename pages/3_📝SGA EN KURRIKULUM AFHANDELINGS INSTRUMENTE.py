@@ -6,7 +6,7 @@ import requests
 from streamlit_extras.app_logo import add_logo
 import streamlit_analytics
 
-streamlit_analytics.start_tracking()
+
 # add app logo
 add_logo("IMAGES/wapen.png", height=150)
 
@@ -35,7 +35,7 @@ st.write("[KLIK HIER](https://drive.google.com/drive/folders/1pi7vv0BvG5-s9o-j27
 st_lottie(lottie_coding, height = 200 , key="coding")
 
 
-streamlit_analytics.stop_tracking()
+
 
 
 
