@@ -5,7 +5,7 @@ from streamlit_lottie import st_lottie
 import requests
 from streamlit_extras.app_logo import add_logo
 
-streamlit_analytics.start_tracking()
+
 # add app logo
 add_logo("IMAGES/wapen.png", height=150)
 
